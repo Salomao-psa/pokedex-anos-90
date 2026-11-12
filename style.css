@@ -1,0 +1,151 @@
+:root {
+  --vermelho: #e3350d;
+  --vermelho-escuro: #b5280a;
+  --amarelo: #ffcb05;
+  --azul: #3b4cca;
+  --fundo: #f2f4f8;
+  --texto: #2b2d42;
+  --card: #ffffff;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: "Nunito", Arial, sans-serif;
+  background: var(--fundo);
+  color: var(--texto);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---------- Topo ---------- */
+.topo {
+  background: linear-gradient(180deg, var(--vermelho) 0%, var(--vermelho-escuro) 100%);
+  color: #fff;
+  text-align: center;
+  padding: 28px 16px 24px;
+  border-bottom: 6px solid #222;
+}
+.topo h1 {
+  font-family: "Press Start 2P", monospace;
+  font-size: clamp(1.1rem, 4vw, 2rem);
+  line-height: 1.4;
+  text-shadow: 3px 3px 0 var(--azul), 5px 5px 0 #222;
+  margin: 10px 0;
+}
+.topo p { font-size: 0.95rem; }
+.topo a { color: var(--amarelo); font-weight: 800; }
+
+.pokebola {
+  width: 46px; height: 46px; margin: 0 auto;
+  border-radius: 50%;
+  border: 4px solid #222;
+  background: linear-gradient(180deg, var(--vermelho) 0 42%, #222 42% 58%, #fff 58% 100%);
+  position: relative;
+}
+.pokebola::after {
+  content: ""; position: absolute; top: 50%; left: 50%;
+  width: 14px; height: 14px; transform: translate(-50%, -50%);
+  background: #fff; border: 3px solid #222; border-radius: 50%;
+}
+
+/* ---------- Controles ---------- */
+main { flex: 1; width: 100%; max-width: 1200px; margin: 0 auto; padding: 24px 16px; }
+
+.controles {
+  display: flex; flex-wrap: wrap; gap: 12px; justify-content: center;
+  margin-bottom: 18px;
+}
+.controles input, .controles select, .controles button {
+  font: inherit; padding: 10px 14px;
+  border: 2px solid #222; border-radius: 10px; background: #fff;
+}
+.controles input { flex: 1 1 240px; max-width: 360px; }
+.controles button, .mais button {
+  background: var(--amarelo); font-weight: 800; cursor: pointer;
+  box-shadow: 3px 3px 0 #222; transition: transform .1s, box-shadow .1s;
+}
+.controles button:hover, .mais button:hover { transform: translate(1px, 1px); box-shadow: 2px 2px 0 #222; }
+.controles button[aria-pressed="true"] { background: var(--vermelho); color: #fff; }
+
+#status { text-align: center; margin-bottom: 14px; font-weight: 700; min-height: 1.4em; }
+#status.erro { color: var(--vermelho-escuro); }
+
+/* ---------- Grid de cards ---------- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  position: relative;
+  background: var(--card);
+  border: 2px solid #222;
+  border-radius: 14px;
+  padding: 18px 16px 16px;
+  text-align: center;
+  box-shadow: 5px 5px 0 rgba(34, 34, 34, .85);
+  transition: transform .2s;
+  animation: entrada .35s ease both;
+}
+.card:hover { transform: translateY(-4px); }
+@keyframes entrada { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+
+.card h2 {
+  font-size: 1.15rem; text-transform: capitalize;
+  padding: 0 28px; /* espaço para o coração */
+}
+.card .numero { font-size: .8rem; color: #777; font-weight: 800; }
+
+.favorito {
+  position: absolute; top: 10px; right: 12px;
+  background: none; border: none; cursor: pointer;
+  font-size: 1.7rem; line-height: 1; color: var(--vermelho);
+  transition: transform .15s;
+}
+.favorito:hover { transform: scale(1.2); }
+
+.moldura {
+  background: #dcdfe6; border-radius: 8px;
+  margin: 12px auto; width: 160px; height: 160px;
+  display: grid; place-items: center;
+}
+.moldura img { width: 140px; height: 140px; object-fit: contain; image-rendering: pixelated; }
+
+.tipos { display: flex; gap: 6px; justify-content: center; margin-bottom: 10px; flex-wrap: wrap; }
+.tipo {
+  padding: 2px 10px; border-radius: 20px; color: #fff;
+  font-size: .75rem; font-weight: 800; text-transform: uppercase;
+  text-shadow: 0 1px 1px rgba(0,0,0,.4);
+}
+
+.info { list-style: none; text-align: left; font-size: .88rem; }
+.info li { padding: 4px 0; border-bottom: 1px dashed #ccc; display: flex; justify-content: space-between; gap: 8px; }
+.info li:last-child { border-bottom: none; }
+.info span:first-child { font-weight: 800; }
+.info span:last-child { text-transform: capitalize; text-align: right; }
+
+.mais { text-align: center; margin: 28px 0 8px; }
+.mais button { font: inherit; padding: 12px 28px; border: 2px solid #222; border-radius: 10px; }
+.mais button[hidden] { display: none; }
+
+footer { background: #222; color: #ddd; text-align: center; padding: 14px; font-size: .85rem; }
+
+/* ---------- Cores dos tipos ---------- */
+.t-normal{background:#a8a77a}.t-fire{background:#ee8130}.t-water{background:#6390f0}
+.t-electric{background:#e0b800}.t-grass{background:#5faa3d}.t-ice{background:#4fb8b4}
+.t-fighting{background:#c22e28}.t-poison{background:#a33ea1}.t-ground{background:#c9a24a}
+.t-flying{background:#8a74e8}.t-psychic{background:#f95587}.t-bug{background:#a6b91a}
+.t-rock{background:#b6a136}.t-ghost{background:#735797}.t-dragon{background:#6f35fc}
+.t-dark{background:#705746}.t-steel{background:#8a8aa8}.t-fairy{background:#d685ad}
+
+/* ---------- Responsivo ---------- */
+@media (max-width: 480px) {
+  .grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .moldura { width: 100%; height: 130px; }
+  .moldura img { width: 110px; height: 110px; }
+  .card h2 { font-size: 1rem; }
+}
+@media (max-width: 360px) { .grid { grid-template-columns: 1fr; } }
