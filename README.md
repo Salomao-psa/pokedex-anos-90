@@ -1,6 +1,6 @@
 Pokédex Anos 90
 
-Projeto da faculdade: uma página web que consome a PokéAPI e mostra os 151 Pokémon da primeira geração em cards. Fiz usando só HTML, CSS e JavaScript, sem framework.
+ uma página web que consome a PokéAPI e mostra os 151 Pokémon da primeira geração em cards. Fiz usando só HTML, CSS e JavaScript, sem framework.
 
 Sobre o projeto
 
